@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "src/sample_exception.cpp"
+#include "test/sample_exception.cpp"
 
 TEST(ExceptionalTest, MemoryAllocation)
 {

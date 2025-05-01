@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the test executable and output directories
-TEST_EXECUTABLE="./build/gtest_practice"
+TEST_EXECUTABLE="./build/gtest_enhancement"
 COVERAGE_INFO="./build/coverage.info"
 COVERAGE_FILTERED_INFO="./build/coverage_filtered.info"
 COVERAGE_OUTPUT_DIR="./build/coverage_report"

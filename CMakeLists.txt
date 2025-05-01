@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.4)
 
 # Project name
-project(gtest_practice)
+project(gtest_enhancement)
 
 # FetchContent to download GoogleTest
 include(FetchContent)
@@ -39,21 +39,21 @@ set(TEST_SOURCES
 )
 
 # Add the executable for tests
-add_executable(gtest_practice ${TEST_SOURCES})
+add_executable(gtest_enhancement ${TEST_SOURCES})
 
 # Link GoogleTest to the test executable
-target_link_libraries(gtest_practice gtest gtest_main gcov gmock)
+target_link_libraries(gtest_enhancement gtest gtest_main gcov gmock)
 
 # Enable testing
 enable_testing()
 
 # Add test cases
-add_test(NAME gtest_practice COMMAND gtest_practice)
+add_test(NAME gtest_enhancement COMMAND gtest_enhancement)
 
 # Custom taret: generate coverage
 add_custom_target(coverage
-    COMMAND ${CMAKE_COMMAND} -E env TEST_EXECUTABLE=$<TARGET_FILE:gtest_practice> bash ${CMAKE_SOURCE_DIR}/generate_coverage.sh
-    DEPENDS gtest_practice
+    COMMAND ${CMAKE_COMMAND} -E env TEST_EXECUTABLE=$<TARGET_FILE:gtest_enhancement> bash ${CMAKE_SOURCE_DIR}/generate_coverage.sh
+    DEPENDS gtest_enhancement
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Running tests and generating coverage report"
 )
