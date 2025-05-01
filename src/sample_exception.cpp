@@ -22,12 +22,10 @@ SampleException::SampleException()
     , m_intPtr2(nullptr)
     , m_intPtr3(nullptr)
 {
-    std::cout << "SampleException constructor called" << std::endl;
 }
 
 SampleException::~SampleException()
 {
-    std::cout << "SampleException destructor called" << std::endl;
 }
 
 void SampleException::initComponents()
@@ -37,31 +35,21 @@ void SampleException::initComponents()
     {
         m_intPtr = std::make_shared<int>(42);
 #ifdef __UNITTEST__
-        if (acquire_test_slot(BAD_ALLOC))
-        {
-            throw std::bad_alloc();
-        }
+        mock_checkpoint_void();
 #endif // __UNITTEST__
 
         m_intPtr2 = std::make_shared<int>(100);
 #ifdef __UNITTEST__
-        if (acquire_test_slot(BAD_ALLOC))
-        {
-            throw std::bad_alloc();
-        }
+        mock_checkpoint_void();
 #endif // __UNITTEST__
 
         m_intPtr3 = std::make_shared<int>(200);
 #ifdef __UNITTEST__
-        if (acquire_test_slot(BAD_ALLOC))
-        {
-            throw std::bad_alloc();
-        }
+        mock_checkpoint_void();
 #endif // __UNITTEST__
     }
     catch (const std::bad_alloc& e)
     {
-        std::cerr << "Memory allocation failed: " << e.what() << '\n';
         m_intPtr.reset();
         m_intPtr2.reset();
         m_intPtr3.reset();
@@ -70,6 +58,6 @@ void SampleException::initComponents()
 
     if (!initialized)
     {
-        std::cerr << "Failed to initialize components" << std::endl;
+        // std::cerr << "Failed to initialize components" << std::endl;
     }
 }
